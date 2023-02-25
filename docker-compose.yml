@@ -1,0 +1,53 @@
+### Vulnerable Web Network ###
+
+version: '2.13.0'
+
+services:
+
+  kali:
+    build: ./kali
+    container_name: kali
+    hostname: docker-kali
+    tty: true
+    networks:
+      vulnet:
+        ipv4_address: 10.20.0.100
+    volumes: 
+      - ./code-python:/code-python
+      - ./code-golang:/code-golang
+
+  juice:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    ports:
+      - 8080:3000
+    networks:
+      vulnet:
+        ipv4_address: 10.20.0.10
+
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - 8081:80
+    networks:
+      vulnet:
+        ipv4_address: 10.20.0.20
+
+  webgoat:
+    image: webgoat/webgoat
+    container_name: webgoat
+    ports:
+      - 8082:8080
+      - 9090-9090
+    networks:
+      vulnet:
+        ipv4_address: 10.20.0.30
+
+networks:
+  vulnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.20.0.0/24
+          gateway: 10.20.0.1
