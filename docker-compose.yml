@@ -8,6 +8,9 @@ services:
     build: ./kali
     container_name: kali
     hostname: docker-kali
+    privileged: true
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
     tty: true
     networks:
       vulnet:
@@ -21,6 +24,9 @@ services:
   #   image: kasmweb/core-kali-rolling:1.12.0
   #   container_name: kali-gui
   #   hostname: kali-gui
+  #   privileged: true
+  #   sysctls:
+  #    - net.ipv6.conf.all.disable_ipv6=0
   #   user: 'root'
   #   tty: true
   #   shm_size: '512m'
@@ -32,7 +38,7 @@ services:
   #     vulnet:
   #       ipv4_address: 10.20.0.250
   #   volumes: 
-  #     - /Users/em0ral/htb:/home/kasm-user/htb
+  #     - /Users/em0ral/development/docker/kali:/kali
 
   # juice:
   #   image: bkimminich/juice-shop
