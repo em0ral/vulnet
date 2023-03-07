@@ -6,8 +6,8 @@ services:
 
   kali:
     build: ./kali
-    container_name: kali
-    hostname: docker-kali
+    container_name: docker-kali
+    hostname: kali
     privileged: true
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
