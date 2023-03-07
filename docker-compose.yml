@@ -16,9 +16,9 @@ services:
       vulnet:
         ipv4_address: 10.20.0.200
     volumes: 
- #    - /Users/em0ral/development/python:/code-python
- #    - /Users/em0ral/development/golang:/code-golang
-      - /Users/em0ral/development/docker/kali:/root/htb
+ #    - /Users/em0ral/lab/python:/code-python
+ #    - /Users/em0ral/lab/golang:/code-golang
+      - /Users/em0ral/lab/docker/kali:/root/htb
 
   # kali2:
   #   image: kasmweb/core-kali-rolling:1.12.0
@@ -38,7 +38,7 @@ services:
   #     vulnet:
   #       ipv4_address: 10.20.0.250
   #   volumes: 
-  #     - /Users/em0ral/development/docker/kali:/root/htb
+  #     - /Users/em0ral/lab/docker/kali:/root/htb
 
   # juice:
   #   image: bkimminich/juice-shop
