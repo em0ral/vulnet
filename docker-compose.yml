@@ -21,21 +21,21 @@ services:
       - ./kali/config/.tmux.conf:/root/.tmux.conf
 
 
-  parrot:
-    build: ./parrot
-    image: packethead/parrot
-    container_name: parrot
-    hostname: parrot
-    privileged: true
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-    tty: true
-    networks:
-      vulnet:
-        ipv4_address: 10.20.0.220
-    volumes: 
-      - /Users/em0ral/lab/docker/parrot/:/root/htb
-      - ./parrot/config/.tmux.conf:/root/.tmux.conf
+  # parrot:
+  #   build: ./parrot
+  #   image: packethead/parrot
+  #   container_name: parrot
+  #   hostname: parrot
+  #   privileged: true
+  #   sysctls:
+  #     - net.ipv6.conf.all.disable_ipv6=0
+  #   tty: true
+  #   networks:
+  #     vulnet:
+  #       ipv4_address: 10.20.0.220
+  #   volumes: 
+  #     - /Users/em0ral/lab/docker/parrot/:/root/htb
+  #     - ./parrot/config/.tmux.conf:/root/.tmux.conf
   
 
   # kali2:
