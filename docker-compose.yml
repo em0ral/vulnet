@@ -6,7 +6,8 @@ services:
 
   kali:
     build: ./kali
-    container_name: docker-kali
+    image: packethead/kali
+    container_name: kali
     hostname: kali
     privileged: true
     sysctls:
@@ -16,14 +17,31 @@ services:
       vulnet:
         ipv4_address: 10.20.0.200
     volumes: 
- #    - /Users/em0ral/lab/python:/code-python
- #    - /Users/em0ral/lab/golang:/code-golang
-      - /Users/em0ral/lab/docker/kali:/root/htb
+      - /Users/em0ral/lab/docker/kali/:/root/htb
+      - ./kali/config/.tmux.conf:/root/.tmux.conf
+
+
+  parrot:
+    build: ./parrot
+    image: packethead/parrot
+    container_name: parrot
+    hostname: parrot
+    privileged: true
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    tty: true
+    networks:
+      vulnet:
+        ipv4_address: 10.20.0.220
+    volumes: 
+      - /Users/em0ral/lab/docker/parrot/:/root/htb
+      - ./parrot/config/.tmux.conf:/root/.tmux.conf
+  
 
   # kali2:
   #   image: kasmweb/core-kali-rolling:1.12.0
-  #   container_name: kali-gui
-  #   hostname: kali-gui
+  #   container_name: kasm-kali
+  #   hostname: kali
   #   privileged: true
   #   sysctls:
   #    - net.ipv6.conf.all.disable_ipv6=0
@@ -36,9 +54,9 @@ services:
   #     - 6901:6901
   #   networks:
   #     vulnet:
-  #       ipv4_address: 10.20.0.250
+  #       ipv4_address: 10.20.0.100
   #   volumes: 
-  #     - /Users/em0ral/lab/docker/kali:/root/htb
+  #     - /Users/em0ral/lab/docker/kasm-kali:/home/kasm-user/htb
 
   # juice:
   #   image: bkimminich/juice-shop
